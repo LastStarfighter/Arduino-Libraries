@@ -51,7 +51,7 @@ void Soda::clear(){
 //===============================Write a Number    
 void Soda::write(int number) {
     boolean isBitSet;
-    
+
     if(number >= 0 && number < 10){ 		//Check to make sure the input isn't out of the display range
 		
 		for(int segment=1; segment < 8; segment++) {
@@ -64,10 +64,10 @@ void Soda::write(int number) {
 		
 	}
 	else if (number == '.') {				//Check for decimal point
-        digitalWrite(segmentPins[0], LOW);
+        digitalWrite(segmentPins[0], LOW);	//Turn the decimal point on
     }
-    else {
-    	clear();
+    else if (number == '..') {				//Check for decimal point clear
+        digitalWrite(segmentPins[0], HIGH);	//Turn decimal point off
     }
 
 }
