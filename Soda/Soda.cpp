@@ -50,32 +50,32 @@ void Soda::clear(){
 
 //===============================Write a Number    
 void Soda::write(int number) {
-    boolean isBitSet;
+	boolean isBitSet;
 
-    if(number >= 0 && number < 10){ 		//Check to make sure the input isn't out of the display range
+	if(number >= 0 && number < 10){ 		//Check to make sure the input isn't out of the display range
 		_number = number;
 		
 		for(int segment=1; segment < 8; segment++) {
 		
 			isBitSet = bitRead(numeral[number], segment);   //Check each bit value to be set
-			isBitSet = ! isBitSet;							//Flip it (a low value lights up the LED)
+			isBitSet = ! isBitSet;				//Flip it (a low value lights up the LED)
 			digitalWrite(segmentPins[segment], isBitSet);	//Write the value to that pin
 		
 		}
 		
 	}
-	else if (number == '.') {				//Check for decimal point
-        digitalWrite(segmentPins[0], LOW);	//Turn the decimal point on
-    }
-    else if (number == '..') {				//Check for decimal point clear
-        digitalWrite(segmentPins[0], HIGH);	//Turn decimal point off
-    }
+	else if (number == '.') {				//Check for the decimal point
+        digitalWrite(segmentPins[0], LOW);			//Turn the decimal point on
+	}
+	else if (number == '..') {				//Check for decimal point clear
+		digitalWrite(segmentPins[0], HIGH);		//Turn decimal point off
+	}
 
 }
 
 //===============================Add one to the existing number   
 void Soda::increment(){
-	if (_number == 9){						//Check to see if digit needs to loop back to zero
+	if (_number == 9){		//Check to see if digit needs to loop back to zero
 		_number=-1;
 	}
 	write(_number+1);
@@ -83,7 +83,7 @@ void Soda::increment(){
 
 //===============================Subtract one from the existing number   
 void Soda::decrement(){
-	if (_number == 0){						//Check to see if digit needs to loop back to nine
+	if (_number == 0){		//Check to see if digit needs to loop back to nine
 		_number = 10;
 	}	
 	write(_number-1);
