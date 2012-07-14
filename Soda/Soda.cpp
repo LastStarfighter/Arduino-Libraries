@@ -73,14 +73,16 @@ void Soda::write(int number) {
 
 }
 
-void Soda::increment(){						//Add one to the current value  (must have been written first)
+//===============================Add one to the existing number   
+void Soda::increment(){
 	if (_number == 9){						//Check to see if digit needs to loop back to zero
 		_number=-1;
 	}
 	write(_number+1);
 }
 
-void Soda::decrement(){						//Subtract one to the current value  (must have been written first)
+//===============================Subtract one from the existing number   
+void Soda::decrement(){
 	if (_number == 0){						//Check to see if digit needs to loop back to nine
 		_number = 10;
 	}	
