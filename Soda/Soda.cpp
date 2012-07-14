@@ -53,6 +53,7 @@ void Soda::write(int number) {
     boolean isBitSet;
 
     if(number >= 0 && number < 10){ 		//Check to make sure the input isn't out of the display range
+		_number = number;
 		
 		for(int segment=1; segment < 8; segment++) {
 		
@@ -70,4 +71,18 @@ void Soda::write(int number) {
         digitalWrite(segmentPins[0], HIGH);	//Turn decimal point off
     }
 
+}
+
+void Soda::increment(){						//Add one to the current value  (must have been written first)
+	if (_number == 9){						//Check to see if digit needs to loop back to zero
+		_number=-1;
+	}
+	write(_number+1);
+}
+
+void Soda::decrement(){						//Subtract one to the current value  (must have been written first)
+	if (_number == 0){						//Check to see if digit needs to loop back to nine
+		_number = 10;
+	}	
+	write(_number-1);
 }

@@ -23,4 +23,13 @@ void loop() {
     Soda.write(i);        // count to 9
     delay(1000);          // delay for 1 second
   }
+  
+  Soda.write('.');        // Turns the decimal point on
+  delay(1000);            // Delay for 1 second
+  Soda.write('..');       // Turns the decimal point off
+  delay(1000);
+  Soda.increment();       // Increases the number by 1 (rolls over to 0 if already 9)
+  delay(1000);
+  Soda.decrement();       // Decreases the number by 1 (rolls over to 9 if already 0)
+  
 }
